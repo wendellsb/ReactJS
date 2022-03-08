@@ -14,14 +14,23 @@ class CharAccount extends UserAccount {
         this.nickname = nickname;
         this.level = level;
     }
+    get getLevel() {
+        console.log("-----GET-----");
+        return this.level;
+    }
+    set setLevel(level) {
+        this.level = level;
+    }
     logCharDetails() {
-        console.log(`The player ${this.name} has the char ${this.nickname} at level ${this.level}`);
+        console.log(`The player ${this.name} is ${this.age} and has the char ${this.nickname} at level ${this.level}`);
     }
 }
+/*
 const will = new UserAccount("Willian", 30);
 console.log(will);
-console.log(will.age);
+//console.log(will.age);
 will.logDatails();
+*/
 const john = new CharAccount("John", 45, "johnmaster", 80);
 console.log(john);
 john.logDatails();
@@ -32,3 +41,5 @@ console.log(wendell);
 wendell.logDatails();
 wendell.logCharDetails();
 console.log(wendell.level);
+john.setLevel = 400;
+console.log(john.getLevel);

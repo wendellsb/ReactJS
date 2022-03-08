@@ -1,6 +1,6 @@
-class UserAccount {
-    name: string;
-    age: number;
+abstract class UserAccount {
+    public name: string;
+    protected age: number;
 
     constructor(name: string, age: number) {
         this.name = name;
@@ -13,7 +13,7 @@ class UserAccount {
 
 class CharAccount extends UserAccount {
     private nickname: string;
-    readonly level: number;
+    /*readonly*/ level: number;
 
     constructor(name: string, age: number, nickname: string, level: number){
         super(name, age);
@@ -21,15 +21,26 @@ class CharAccount extends UserAccount {
         this.level = level;
     }
 
+    get getLevel() {
+        console.log("-----GET-----");
+        return this.level;
+    }
+
+    set setLevel(level: number){
+        this.level = level;
+    }
+
     logCharDetails():void {
-        console.log(`The player ${this.name} has the char ${this.nickname} at level ${this.level}`)
+        console.log(`The player ${this.name} is ${this.age} and has the char ${this.nickname} at level ${this.level}`)
     }
 }
 
+/*
 const will = new UserAccount("Willian", 30);
 console.log(will);
-console.log(will.age);
+//console.log(will.age);
 will.logDatails();
+*/
 
 const john = new CharAccount("John", 45, "johnmaster", 80);
 console.log(john);
@@ -42,3 +53,6 @@ console.log(wendell);
 wendell.logDatails();
 wendell.logCharDetails();
 console.log(wendell.level);
+
+john.setLevel = 400;
+console.log(john.getLevel);
